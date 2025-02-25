@@ -1,0 +1,16 @@
+.calendar-cell {
+    width: 155px;
+    height: 100px;
+    position: relative;
+}
+
+.day-number {
+    font-size: 1.2em;
+    font-weight: 400;
+    opacity: .5;
+    margin-top: 15px;
+    margin-right: 15px;
+    float: right;
+    margin-bottom: 10px;
+    font-family: Plus Jakarta Sans, sans-serif;
+}

@@ -1,0 +1,10 @@
+.calendar-grid {
+    display: grid;
+    width: fit-content;
+    border: 1px solid #acacac;
+    flex: content;
+}
+
+calendar-row:not(:last-child) {
+    border-bottom: 1px solid #acacac;
+}
