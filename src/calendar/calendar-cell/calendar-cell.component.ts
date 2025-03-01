@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
     selector: 'calendar-cell',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
     styleUrl: './calendar-cell.component.css'
 })
 export class CalendarCellComponent {
-    title = 'hello';
+    day = input.required<Date>();
 }

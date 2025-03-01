@@ -1,5 +1,5 @@
 <div class="calendar-row">
-    @for (col of [0,1,2,3,4,5,6]; track col) {
-        <calendar-cell></calendar-cell>
+    @for (day of week(); track day) {
+        <calendar-cell [day]="day"></calendar-cell>
     }
 </div>

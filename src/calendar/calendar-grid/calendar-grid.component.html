@@ -1,5 +1,6 @@
+{{ month }}, {{ year }}
 <div class="calendar-grid">
-    @for (row of [0,1,2,3,4]; track row) {
-        <calendar-row></calendar-row>
+    @for (week of calendarDates; track week) {
+        <calendar-row [week]="week"></calendar-row>
     }
 </div>
