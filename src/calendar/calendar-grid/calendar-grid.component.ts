@@ -1,34 +1,57 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarRowComponent } from '../calendar-row/calendar-row.component';
 import { Week } from '../models/week-enum';
+import { MatIconModule } from '@angular/material/icon'
 
 @Component({
     selector: 'calendar-grid',
-    imports: [CalendarRowComponent],
+    imports: [
+        CalendarRowComponent,
+        MatIconModule
+    ],
     templateUrl: './calendar-grid.component.html',
     styleUrl: './calendar-grid.component.css'
 })
 export class CalendarGridComponent {
+    private calendarCache: { [key: string]: Date[][] } = {};
     calendarDates: Date[][] = [];
-    month!: string;
+    monthStr!: string;
+    month!: number;
     year!: number;
 
     ngOnInit() {
-        this.generateCalendarDates();
+        const today = new Date();
+        this.generateCalendarDates(today);
     }
 
-    generateCalendarDates() {
-        const currDateTime = new Date();
-        const year = currDateTime.getFullYear();
-        const month = currDateTime.getMonth();
-        const firstDayOfMonth = new Date(year, month, 1);
-        const lastDayOfMonth = new Date(year, month + 1, 0); // 0 is the last day of the previous month
-        
-        const dates = this.generateDates(firstDayOfMonth, lastDayOfMonth);
-        
-        this.calendarDates = this.splitIntoWeeks(dates);
-        this.month = currDateTime.toLocaleString('default', { month: 'long' });
+    prevMonth() {
+        this.generateCalendarDates(new Date(this.year, this.month - 1));
+    }
+
+    nextMonth() {
+        this.generateCalendarDates(new Date(this.year, this.month + 1));
+    }
+
+    generateCalendarDates(targetDate: Date) {
+        const month = targetDate.getMonth();
+        const year = targetDate.getFullYear();
+        const cacheKey = `${month}-${year}`;
+
+        if (this.calendarCache[cacheKey]) {
+            this.calendarDates = this.calendarCache[cacheKey];
+        } else {
+            const firstDayOfMonth = new Date(year, month, 1);
+            const lastDayOfMonth = new Date(year, month + 1, 0); // 0 is the last day of the previous month
+            
+            const dates = this.generateDates(firstDayOfMonth, lastDayOfMonth);
+            
+            this.calendarDates = this.splitIntoWeeks(dates);
+            this.calendarCache[cacheKey] = this.calendarDates;
+        }
+
+        this.month = month;
         this.year = year;
+        this.monthStr = targetDate.toLocaleString('default', { month: 'long' });
     }
 
     generateDates(firstDayOfMonth: Date, lastDayOfMonth: Date): Date[] {

@@ -1,6 +1,14 @@
-{{ month }}, {{ year }}
+{{ monthStr }}, {{ year }}
 <div class="calendar-grid">
-    @for (week of calendarDates; track week) {
+    <button (click)="prevMonth()" mat-fab>
+        <mat-icon>home</mat-icon>
+        Previous Month
+    </button>
+    <button (click)="nextMonth()" mat-fab>
+        <mat-icon>home</mat-icon>
+        Next Month
+    </button>
+    @for (week of calendarDates; track week[0]) {
         <calendar-row [week]="week"></calendar-row>
     }
 </div>
