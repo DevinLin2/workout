@@ -1,3 +1,44 @@
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+    height: 100%; 
+    font-size: 16px;
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.m-l-auto {
+    margin-left: auto !important;
+}
+
+.bg-primary {
+    background-color: rgb(134, 191, 230) !important;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.maxWidth {
+    max-width: 75rem;
+}
+
+.pageWrapper {
+    padding: 2rem;
+    min-height: calc(100vh - 5rem);
+    margin: 0 auto;
+}

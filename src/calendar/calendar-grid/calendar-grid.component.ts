@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CalendarRowComponent } from '../calendar-row/calendar-row.component';
 import { Week } from '../models/week-enum';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
     selector: 'calendar-grid',
     imports: [
         CalendarRowComponent,
-        MatIconModule
+        MatIconModule,
+        MatCardModule,
+        MatButtonModule,
+        MatToolbarModule,
     ],
     templateUrl: './calendar-grid.component.html',
-    styleUrl: './calendar-grid.component.css'
+    styleUrl: './calendar-grid.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarGridComponent {
     private calendarCache: { [key: string]: Date[][] } = {};
+    weekdays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     calendarDates: Date[][] = [];
     monthStr!: string;
     month!: number;
     year!: number;
 
     ngOnInit() {
-        const today = new Date();
-        this.generateCalendarDates(today);
+        this.generateCalendarDates(new Date());
     }
 
     prevMonth() {
@@ -30,6 +37,10 @@ export class CalendarGridComponent {
 
     nextMonth() {
         this.generateCalendarDates(new Date(this.year, this.month + 1));
+    }
+
+    onDateChange(date: Date) {
+        this.generateCalendarDates(date);
     }
 
     generateCalendarDates(targetDate: Date) {
@@ -97,5 +108,9 @@ export class CalendarGridComponent {
         });
     
         return weeks;
+    }
+
+    trackByWeek(index: number, week: Date[]): string {
+        return week[0].toISOString();
     }
 }

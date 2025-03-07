@@ -1,7 +1,10 @@
 .calendar-cell {
-    width: 155px;
-    height: 100px;
+    min-height: 6rem;
     position: relative;
+}
+
+.calendar-cell:hover {
+    background-color: #f0f0f0;
 }
 
 .day-number {

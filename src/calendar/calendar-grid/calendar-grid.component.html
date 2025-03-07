@@ -1,14 +1,29 @@
-{{ monthStr }}, {{ year }}
-<div class="calendar-grid">
-    <button (click)="prevMonth()" mat-fab>
-        <mat-icon>home</mat-icon>
-        Previous Month
-    </button>
-    <button (click)="nextMonth()" mat-fab>
-        <mat-icon>home</mat-icon>
-        Next Month
-    </button>
-    @for (week of calendarDates; track week[0]) {
-        <calendar-row [week]="week"></calendar-row>
-    }
-</div>
+<mat-card class="mat-card" appearance="outlined">
+    <mat-toolbar class="mat-toolbar bg-primary text-white">
+        <mat-toolbar-row class="mat-toolbar-row">
+            <span>{{ monthStr }} {{ year }}</span>
+            <div class="m-l-auto d-flex align-items-center">
+                <button (click)="prevMonth()" mat-icon-button class="calendar-button" aria-label="Previous month button">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+                <button (click)="nextMonth()" mat-icon-button class="calendar-button" aria-label="Next month button">
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card-content class="card-content">
+        <div class="calendar-grid">
+            <div class="calendar-grid-header">
+                @for (weekday of weekdays; track weekday) {
+                    <div class="calendar-grid-header-cell">
+                        {{ weekday }}
+                    </div>
+                } 
+            </div>
+            @for (week of calendarDates; track week[0]) {
+                <calendar-row [week]="week"></calendar-row>
+            } 
+        </div>
+    </mat-card-content>
+</mat-card>
