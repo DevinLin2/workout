@@ -6,6 +6,9 @@
                 <button (click)="prevMonth()" mat-icon-button class="calendar-button" aria-label="Previous month button">
                     <mat-icon>arrow_back</mat-icon>
                 </button>
+                <button (click)="thisMonth()" mat-icon-button class="calendar-button" aria-label="This month button">
+                    <mat-icon>today</mat-icon>
+                </button>
                 <button (click)="nextMonth()" mat-icon-button class="calendar-button" aria-label="Next month button">
                     <mat-icon>arrow_forward</mat-icon>
                 </button>
@@ -22,7 +25,7 @@
                 } 
             </div>
             @for (week of calendarDates; track week[0]) {
-                <calendar-row [week]="week"></calendar-row>
+                <calendar-row [week]="week" [today]="today" [month]="month"></calendar-row>
             } 
         </div>
     </mat-card-content>

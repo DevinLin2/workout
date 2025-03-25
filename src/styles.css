@@ -1,4 +1,9 @@
 
+:root {
+    --calendar-border: 1px solid #e0e0e0;
+    --calendar-color-primary: rgb(79, 126, 83);
+}
+
 html, body { 
     height: 100%; 
     font-size: 16px;
@@ -26,7 +31,7 @@ body {
 }
 
 .bg-primary {
-    background-color: rgb(134, 191, 230) !important;
+    background-color: var(--calendar-color-primary) !important;
 }
 
 .text-white {

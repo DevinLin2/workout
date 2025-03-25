@@ -10,10 +10,12 @@ import { Week } from '../models/week-enum';
 })
 export class CalendarRowComponent implements OnChanges{
     week = input.required<Date[]>();
+    today = input.required<Date>();
+    month = input.required<number>();
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['week'] && this.week().length !== Week.DAYSINWEEK) {
-            throw new Error('Input week does not contain seven days')
+            throw new Error('Input week does not contain seven days');
         }
     }
 }

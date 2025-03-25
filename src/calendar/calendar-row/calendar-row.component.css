@@ -2,13 +2,13 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     box-sizing: border-box;
-    border-left: 1px solid #acacac; 
-    border-right: 1px solid #acacac;
-    border-bottom: 1px solid #acacac;
+    border-left: var(--calendar-border);
+    border-right: var(--calendar-border);
+    border-bottom: var(--calendar-border);
 }
 
 /* make this above a variable */
 
 calendar-cell:not(:last-child) {
-    border-right: 1px solid #acacac;
+    border-right: var(--calendar-border);
 }

@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class CalendarGridComponent {
     private calendarCache: { [key: string]: Date[][] } = {};
+    today = new Date();
     weekdays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     calendarDates: Date[][] = [];
     monthStr!: string;
@@ -28,7 +29,7 @@ export class CalendarGridComponent {
     year!: number;
 
     ngOnInit() {
-        this.generateCalendarDates(new Date());
+        this.generateCalendarDates(this.today);
     }
 
     prevMonth() {
@@ -39,8 +40,8 @@ export class CalendarGridComponent {
         this.generateCalendarDates(new Date(this.year, this.month + 1));
     }
 
-    onDateChange(date: Date) {
-        this.generateCalendarDates(date);
+    thisMonth() {
+        this.generateCalendarDates(this.today);
     }
 
     generateCalendarDates(targetDate: Date) {
@@ -108,9 +109,5 @@ export class CalendarGridComponent {
         });
     
         return weeks;
-    }
-
-    trackByWeek(index: number, week: Date[]): string {
-        return week[0].toISOString();
     }
 }

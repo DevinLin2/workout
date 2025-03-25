@@ -1,5 +1,5 @@
 <div class="calendar-row">
     @for (day of week(); track day) {
-        <calendar-cell [day]="day"></calendar-cell>
+        <calendar-cell [day]="day" [today]="today()" [month]="month()"></calendar-cell>
     }
 </div>

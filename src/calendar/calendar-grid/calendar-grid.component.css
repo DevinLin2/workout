@@ -44,7 +44,7 @@
 .calendar-grid-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    border-bottom: 1px solid#acacac;
+    border-bottom: var(--calendar-border);
 }
 
 .calendar-grid-header-cell {
