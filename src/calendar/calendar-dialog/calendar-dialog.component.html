@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Log for {{data.date}}</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Favorite Animal</mat-label>
+        <input matInput [(ngModel)]="date" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="date()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
