@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './calendar/calendar.config';
-import { CalendarGridComponent } from './calendar/calendar-grid/calendar-grid.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 
-bootstrapApplication(CalendarGridComponent, appConfig)
+bootstrapApplication(LoginFormComponent, appConfig)
   .catch((err) => console.error(err));

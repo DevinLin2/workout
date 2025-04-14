@@ -1,0 +1,29 @@
+<div class="login-wrapper">
+    <form [formGroup]="loginForm" class="login-form">
+        <h1 class="login-header">Login</h1>
+        <div class="login-input">
+            <input type="text" class="input" placeholder="Username" formControlName="username" name="username">
+            <mat-icon>person</mat-icon>
+        </div>
+        <div class="login-input">
+            <input type="password" class="input" placeholder="Password" formControlName="password" name="password">
+            <mat-icon>lock</mat-icon>
+        </div>
+        @if (isError) {
+            <div class="error-message">{{ errorMessage }}</div>
+        }
+        <div class="remember-forgot">
+            <label>
+                <input type="checkbox" class="input" formControlName="remember" name="remember">
+                Remember me
+            </label>
+            <a class="forgot-link" href="#">Forgot password?</a>
+        </div>
+        <button mat-button (click)="onSubmit()">Login</button>
+        <div class="register">
+            <p>
+                Don't have an account? <a class="register-link" href="#">Register</a>
+            </p>
+        </div>
+    </form>
+</div>

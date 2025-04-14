@@ -11,7 +11,10 @@ html, body {
 
 body { 
     margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: url('../public/login-background.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .align-items-center {
@@ -46,4 +49,7 @@ body {
     padding: 2rem;
     min-height: calc(100vh - 5rem);
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
